@@ -388,3 +388,96 @@ const currentYear =
 document.getElementById(
     "currentYear"
 ).textContent = currentYear;
+
+const projectImageButtons =
+    document.querySelectorAll(".project-image-button");
+
+const imageModal =
+    document.getElementById("imageModal");
+
+const imageModalClose =
+    document.getElementById("imageModalClose");
+
+const modalImage =
+    document.getElementById("modalImage");
+
+const modalCaption =
+    document.getElementById("modalCaption");
+
+
+function closeImageModal() {
+
+    imageModal.classList.remove("open");
+
+    imageModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    document.body.style.overflow = "";
+
+}
+
+
+projectImageButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+        const imagePath =
+            button.dataset.image;
+
+        const imageCaption =
+            button.dataset.caption;
+
+        modalImage.src = imagePath;
+        modalImage.alt = imageCaption;
+
+        modalCaption.textContent =
+            imageCaption;
+
+        imageModal.classList.add("open");
+
+        imageModal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.style.overflow =
+            "hidden";
+
+    });
+
+});
+
+
+imageModalClose.addEventListener(
+    "click",
+    closeImageModal
+);
+
+
+imageModal.addEventListener(
+    "click",
+    function (event) {
+
+        if (event.target === imageModal) {
+            closeImageModal();
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Escape" &&
+            imageModal.classList.contains("open")
+        ) {
+            closeImageModal();
+        }
+
+    }
+);
