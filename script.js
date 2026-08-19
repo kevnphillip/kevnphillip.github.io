@@ -184,7 +184,7 @@ const terminalLines = [
     {
         type: "output",
         text:
-            "UFITAT/  PiPS/  timetable-system/  security-labs/"
+            "UFITAT/  android-homelab/  PiPS/  timetable-system/  security-labs/"
     },
 
     {
